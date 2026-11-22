@@ -1,0 +1,8 @@
+[
+  { "slug": "dashboard", "component": "Dashboard" },
+  { "slug": "product", "component": "Products" },
+  { "slug": "sales", "component": "Sales" },
+  { "slug": "supplier", "component": "Supplier" },
+  { "slug": "income-report", "component": "IncomeReport" },
+  { "slug": "settings", "component": "Settings" }
+]
