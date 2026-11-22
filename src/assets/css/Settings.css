@@ -1,0 +1,311 @@
+
+.settings-page {
+  min-height: 100vh;
+  padding: 30px 25px;
+  background: #f0f1f7;
+  font-family: Arial, sans-serif;
+  color: #354052;
+}
+
+.settings-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.settings-title h2 {
+  font-size: 25px;
+  color: #46546b;
+  margin: 0 0 8px;
+}
+
+.settings-title p {
+  color: #8290a5;
+  font-size: 14px;
+  margin: 0;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.settings-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 13px;
+  box-shadow: 0 3px 8px rgba(0,0,0,.07);
+}
+
+.settings-card h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #46546b;
+}
+
+.settings-card > p {
+  margin: 0 0 22px;
+  color: #8290a5;
+  font-size: 13px;
+}
+
+.settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.settings-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #58677e;
+}
+
+.settings-field input,
+.settings-field select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e1e5ec;
+  border-radius: 8px;
+  background: #fff;
+  color: #46546b;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.settings-field input:focus,
+.settings-field select:focus {
+  border-color: #4d75e8;
+}
+
+.settings-save {
+  background: #4d75e8;
+  color: #fff;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.settings-save:hover {
+  background: #365bc9;
+}
+
+.settings-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.settings-option div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.settings-option strong {
+  font-size: 14px;
+  color: #46546b;
+}
+
+.settings-option small {
+  font-size: 12px;
+  color: #8290a5;
+}
+
+.settings-option input {
+  width: 17px;
+  height: 17px;
+  accent-color: #4d75e8;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.settings-option:last-of-type {
+  margin-bottom: 18px;
+}
+
+@media (max-width: 850px) {
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .settings-page {
+    padding: 18px 12px;
+  }
+
+  .settings-card {
+    padding: 18px;
+  }
+
+  .settings-title h2 {
+    font-size: 21px;
+  }
+}
+
+
+/* Account Management */
+
+.account-management {
+  background: #fff;
+  padding: 25px;
+  margin-top: 25px;
+  border-radius: 13px;
+  box-shadow: 0 3px 8px rgba(0,0,0,.07);
+}
+
+.account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.account-header h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #46546b;
+}
+
+.account-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #8290a5;
+}
+
+.account-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.account-summary div {
+  padding: 18px;
+  background: #f7f8fc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.account-summary span {
+  font-size: 13px;
+  color: #8290a5;
+}
+
+.account-summary strong {
+  font-size: 25px;
+  color: #4d75e8;
+}
+
+.account-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.account-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 750px;
+}
+
+.account-table th {
+  background: #f7f8fc;
+  color: #718096;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  padding: 16px 12px;
+  border-bottom: 1px solid #e5eaf0;
+  white-space: nowrap;
+}
+
+.account-table td {
+  padding: 17px 12px;
+  font-size: 13px;
+  color: #58677e;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.account-table tbody tr:hover {
+  background: #f8faff;
+}
+
+.account-role,
+.account-status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.account-role.admin {
+  background: #e7edff;
+  color: #4d75e8;
+}
+
+.account-role.staff {
+  background: #e2f8ef;
+  color: #00ae7b;
+}
+
+.account-status.active {
+  background: #d9f7ed;
+  color: #00b887;
+}
+
+.account-status.inactive {
+  background: #ffe3e1;
+  color: #ef493f;
+}
+
+.account-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.account-actions button {
+  border: 1px solid #e1e5ec;
+  background: white;
+  color: #53657f;
+  padding: 7px 9px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.account-actions button:hover {
+  background: #4d75e8;
+  color: white;
+  border-color: #4d75e8;
+}
+
+@media (max-width: 650px) {
+  .account-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .account-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .account-management {
+    padding: 18px;
+  }
+}

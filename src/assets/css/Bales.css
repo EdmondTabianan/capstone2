@@ -1,0 +1,298 @@
+
+.bales-page {
+  min-height: 100vh;
+  background: #f3f4f9;
+  color: #354052;
+  font-family: Arial, sans-serif;
+}
+
+.bales-header {
+  background: #fff;
+  padding: 25px 35px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.bales-header h1 {
+  margin: 0;
+  color: #4d75e8;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.bales-content {
+  padding: 25px;
+}
+
+.bales-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  gap: 15px;
+}
+
+.bales-title-row h2 {
+  font-size: 25px;
+  font-weight: 600;
+  margin: 0 0 5px;
+}
+
+.bales-title-row p {
+  margin: 0;
+  color: #8290a5;
+  font-size: 14px;
+}
+
+.add-bale-btn {
+  background: #4d70e5;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-bale-btn:hover {
+  background: #365bc9;
+}
+
+/* Summary Cards */
+
+.bales-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.bale-card {
+  background: #fff;
+  border-radius: 13px;
+  padding: 25px;
+  min-height: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.07);
+}
+
+.bale-card-label {
+  font-size: 13px;
+  color: #65748b;
+  letter-spacing: 0.5px;
+  margin-bottom: 7px;
+}
+
+.bale-card-value {
+  color: #4d75e8;
+  font-size: 27px;
+  font-weight: 700;
+}
+
+/* Filters */
+
+.bales-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.bales-filters input {
+  width: 350px;
+  padding: 14px 17px;
+  border: 1px solid #e1e5ec;
+  border-radius: 9px;
+  outline: none;
+  font-size: 14px;
+}
+
+.bales-filters input:focus {
+  border-color: #4d75e8;
+}
+
+.bales-filter-options {
+  display: flex;
+  gap: 12px;
+}
+
+.bales-filter-options select {
+  padding: 13px 16px;
+  background: white;
+  border: 1px solid #e1e5ec;
+  border-radius: 9px;
+  color: #475569;
+  cursor: pointer;
+}
+
+/* Table */
+
+.bales-table-container {
+  background: white;
+  border-radius: 13px;
+  overflow-x: auto;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.bales-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.bales-table th {
+  background: #f9fafc;
+  color: #65748b;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 19px 22px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.bales-table td {
+  padding: 22px;
+  font-size: 14px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.bales-table tbody tr:nth-child(even) {
+  background: #f8f9fc;
+}
+
+.bales-table tbody tr:hover {
+  background: #f0f4ff;
+}
+
+.bale-id {
+  color: #4d75e8;
+  font-weight: 600;
+}
+
+.bale-supplier {
+  font-weight: 500;
+}
+
+.bale-amount {
+  font-weight: 600;
+}
+
+.stock-zero {
+  color: #ef2929;
+  font-weight: 600;
+}
+
+/* Status Badges */
+
+.bale-status {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.bale-status.available {
+  color: #00b889;
+  background: #d9f7ed;
+}
+
+.bale-status.nearly-sold {
+  color: #e99b25;
+  background: #fff4dc;
+  
+}
+
+.bale-status.sold-out {
+  color: #ef4444;
+  background: #ffe1df;
+}
+
+/* Actions */
+
+.bale-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.bale-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.view-action {
+  color: #4d75e8;
+}
+
+.edit-action {
+  color: #e99b25;
+}
+
+.delete-action {
+  color: #ef4444;
+}
+
+.bale-actions button:hover {
+  text-decoration: underline;
+}
+
+.empty-bales {
+  text-align: center;
+  padding: 35px !important;
+  color: #8290a5;
+}
+
+.bales-footer {
+  color: #8290a5;
+  font-size: 13px;
+  margin-top: 20px;
+}
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+  .bales-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .bales-content {
+    padding: 15px;
+  }
+
+  .bales-title-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .bales-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bales-filters input {
+    width: auto;
+  }
+
+  .bales-filter-options {
+    flex-wrap: wrap;
+  }
+
+  .bales-filter-options select {
+    flex: 1;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bales-summary {
+    grid-template-columns: 1fr;
+  }
+}

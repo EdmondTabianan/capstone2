@@ -2,7 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes, useParams } from 'react-router-
 import Sidebar from './layout/Sidebar';
 import Dashboard from './pages/Dashboard';
 import Products from './pages/Products';
-import Sales from './pages/Sales';
+import Bales from './pages/Bales';
 import Supplier from './pages/Supplier';
 import IncomeReport from './pages/IncomeReport';
 import Settings from './pages/Settings';
@@ -11,7 +11,7 @@ import pageRoutes from '../data/pages.json';
 const componentMap = {
   Dashboard,
   Products,
-  Sales,
+  Bales,
   Supplier,
   IncomeReport,
   Settings,
@@ -46,7 +46,7 @@ function SlugResolver() {
             <Route path="/home" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/product" element={<Products />} />
-            <Route path="/sales" element={<Sales />} />
+            <Route path="/Bales" element={<Bales />} />
             <Route path="/supplier" element={<Supplier />} />
             <Route path="/income-report" element={<IncomeReport />} />
             <Route path="/settings" element={<Settings />} />

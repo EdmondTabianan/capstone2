@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const links = [
   { to: '/dashboard', label: 'Dashboard' },
   { to: '/product', label: 'Product' },
-  { to: '/sales', label: 'Sales' },
+  { to: '/Bales', label: 'Bales' },
   { to: '/supplier', label: 'Supplier' },
   { to: '/income-report', label: 'Income Report' },
   { to: '/settings', label: 'Settings' },
@@ -71,7 +71,7 @@ function Sidebar() {
               <span className="nav-icon" aria-hidden="true">
                 {label === 'Dashboard' && '▣'}
                 {label === 'Product' && '◫'}
-                {label === 'Sales' && '◈'}
+                {label === 'Bales' && '◈'}
                 {label === 'Supplier' && '◧'}
                 {label === 'Income Report' && '◩'}
                 {label === 'Settings' && '⚙'}
