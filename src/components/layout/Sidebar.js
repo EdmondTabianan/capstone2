@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import "../../assets/css/Sidebar.css";
 
 const links = [
   { to: '/dashboard', label: 'Dashboard' },

@@ -1,0 +1,365 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "type": "T-SHIRT",
+      "category": "TOPS",
+      "price": 150,
+      "stocks": 100,
+      "sold": 80
+    },
+    {
+      "id": 2,
+      "type": "JACKET",
+      "category": "TOPS",
+      "price": 150,
+      "stocks": 100,
+      "sold": 100
+    },
+    {
+      "id": 3,
+      "type": "HOODIE",
+      "category": "TOPS",
+      "price": 350,
+      "stocks": 60,
+      "sold": 25
+    },
+    {
+      "id": 4,
+      "type": "POLO SHIRT",
+      "category": "TOPS",
+      "price": 220,
+      "stocks": 80,
+      "sold": 45
+    },
+    {
+      "id": 5,
+      "type": "JEANS",
+      "category": "BOTTOMS",
+      "price": 400,
+      "stocks": 70,
+      "sold": 66
+    },
+    {
+      "id": 6,
+      "type": "SHORTS",
+      "category": "BOTTOMS",
+      "price": 180,
+      "stocks": 90,
+      "sold": 40
+    },
+    {
+      "id": 7,
+      "type": "TROUSERS",
+      "category": "BOTTOMS",
+      "price": 320,
+      "stocks": 50,
+      "sold": 50
+    }
+  ],
+  "incomeData": [
+    {
+      "name": "Clothing Income",
+      "amount": 45000
+    },
+    {
+      "name": "Accessories Income",
+      "amount": 8500
+    },
+    {
+      "name": "Shoes Income",
+      "amount": 3250
+    },
+    {
+      "name": "Bags Income",
+      "amount": 3250
+    }
+  ],
+  "expenseData": [
+    {
+      "name": "Cost of Sales",
+      "amount": 10000,
+      "percentage": 60
+    },
+    {
+      "name": "Salary Expenses",
+      "amount": 3750,
+      "percentage": 22.5
+    },
+    {
+      "name": "Utilities",
+      "amount": 1500,
+      "percentage": 9
+    },
+    {
+      "name": "Rent Expenses",
+      "amount": 825,
+      "percentage": 5
+    },
+    {
+      "name": "Supply Expenses",
+      "amount": 575,
+      "percentage": 3.5
+    }
+  ],
+  "summaryCards": [
+    {
+      "label": "Today's Income",
+      "value": "₱10,699.69",
+      "accent": "blue"
+    },
+    {
+      "label": "Today's Earnings",
+      "value": "₱5,599.69",
+      "accent": "blue"
+    },
+    {
+      "label": "Products",
+      "value": "100",
+      "accent": "blue"
+    },
+    {
+      "label": "Categories",
+      "value": "16",
+      "accent": "blue"
+    },
+    {
+      "label": "Users",
+      "value": "4",
+      "accent": "blue"
+    }
+  ],
+  "purchaseData": [
+    {
+      "product": "T-shirt",
+      "quantity": 5,
+      "date": "2023-01",
+      "total": 500
+    },
+    {
+      "product": "Jacket",
+      "quantity": 5,
+      "date": "2023-01",
+      "total": 750
+    },
+    {
+      "product": "Short",
+      "quantity": 5,
+      "date": "2023-01",
+      "total": 500
+    },
+    {
+      "product": "Bag",
+      "quantity": 1,
+      "date": "2023-01",
+      "total": 850
+    }
+  ],
+  "salesData": [
+    {
+      "category": "TOPS",
+      "type": "T-shirt",
+      "totalStocks": 100,
+      "totalSold": 50
+    },
+    {
+      "category": "TOPS",
+      "type": "Jacket",
+      "totalStocks": 100,
+      "totalSold": 30
+    },
+    {
+      "category": "BOTTOMS",
+      "type": "Short",
+      "totalStocks": 100,
+      "totalSold": 20
+    },
+    {
+      "category": "BOTTOMS",
+      "type": "Pants",
+      "totalStocks": 50,
+      "totalSold": 5
+    }
+  ],
+  "newProducts": [
+    "T-shirt",
+    "Jacket",
+    "Shorts",
+    "Shoes",
+    "Cap"
+  ],
+  "chartData": [
+    {
+      "label": "Jan",
+      "income": 90,
+      "sales": 40,
+      "revenue": 60,
+      "tax": 30
+    },
+    {
+      "label": "Feb",
+      "income": 110,
+      "sales": 50,
+      "revenue": 70,
+      "tax": 35
+    },
+    {
+      "label": "Mar",
+      "income": 120,
+      "sales": 58,
+      "revenue": 80,
+      "tax": 38
+    },
+    {
+      "label": "Apr",
+      "income": 130,
+      "sales": 62,
+      "revenue": 90,
+      "tax": 42
+    },
+    {
+      "label": "May",
+      "income": 150,
+      "sales": 70,
+      "revenue": 100,
+      "tax": 48
+    },
+    {
+      "label": "Jun",
+      "income": 160,
+      "sales": 82,
+      "revenue": 110,
+      "tax": 52
+    },
+    {
+      "label": "Jul",
+      "income": 170,
+      "sales": 88,
+      "revenue": 120,
+      "tax": 58
+    },
+    {
+      "label": "Aug",
+      "income": 180,
+      "sales": 90,
+      "revenue": 130,
+      "tax": 60
+    },
+    {
+      "label": "Sep",
+      "income": 190,
+      "sales": 95,
+      "revenue": 140,
+      "tax": 64
+    },
+    {
+      "label": "Oct",
+      "income": 170,
+      "sales": 85,
+      "revenue": 125,
+      "tax": 60
+    },
+    {
+      "label": "Nov",
+      "income": 175,
+      "sales": 88,
+      "revenue": 130,
+      "tax": 65
+    },
+    {
+      "label": "Dec",
+      "income": 200,
+      "sales": 100,
+      "revenue": 145,
+      "tax": 72
+    }
+  ],
+  "yTicks": [
+    0,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000,
+    12000,
+    14000,
+    16000,
+    18000
+  ],
+  "bales": [
+    {
+      "id": "B-001",
+      "supplier": "Garment Corp",
+      "cost": 3000,
+      "stock": 15,
+      "profit": 8000,
+      "status": "AVAILABLE"
+    },
+    {
+      "id": "B-002",
+      "supplier": "Fashion Hub",
+      "cost": 3000,
+      "stock": 5,
+      "profit": 6500,
+      "status": "NEARLY SOLD"
+    },
+    {
+      "id": "B-003",
+      "supplier": "Textile Supplies",
+      "cost": 3000,
+      "stock": 0,
+      "profit": 12000,
+      "status": "SOLD OUT"
+    },
+    {
+      "id": "B-004",
+      "supplier": "Clothing Wholesale",
+      "cost": 3000,
+      "stock": 25,
+      "profit": 12500,
+      "status": "AVAILABLE"
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "SUP-001",
+      "name": "Garment Corp",
+      "contact": "09123456789",
+      "address": "Quezon City",
+      "notes": "Regular supplier - Premium quality garments",
+      "status": "ACTIVE",
+      "bales": 1,
+      "spent": 3000
+    },
+    {
+      "id": "SUP-002",
+      "name": "Fashion Hub",
+      "contact": "09234567890",
+      "address": "Makati City",
+      "notes": "Trendy fashion items - Fast delivery",
+      "status": "ACTIVE",
+      "bales": 1,
+      "spent": 3000
+    },
+    {
+      "id": "SUP-003",
+      "name": "Textile Supplies",
+      "contact": "09345678901",
+      "address": "Manila",
+      "notes": "Bulk textile supplier - Wholesale prices",
+      "status": "ACTIVE",
+      "bales": 1,
+      "spent": 3000
+    },
+    {
+      "id": "SUP-004",
+      "name": "Clothing Wholesale",
+      "contact": "09456789012",
+      "address": "Pasig City",
+      "notes": "New supplier - Competitive pricing",
+      "status": "INACTIVE",
+      "bales": 1,
+      "spent": 3000
+    }
+  ]
+}

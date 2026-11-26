@@ -1,49 +1,22 @@
 
 import { useState } from "react";
 import "../../assets/css/Bales.css";
+import productData from "../../data/product.json";
 
 function Bales() {
-  const [bales, setBales] = useState([
-    {
-      id: "B-001",
-      supplier: "Garment Corp",
-      cost: 3000,
-      stock: 15,
-      profit: 8000,
-      status: "AVAILABLE",
-    },
-    {
-      id: "B-002",
-      supplier: "Fashion Hub",
-      cost: 3000,
-      stock: 5,
-      profit: 6500,
-      status: "NEARLY SOLD",
-    },
-    {
-      id: "B-003",
-      supplier: "Textile Supplies",
-      cost: 3000,
-      stock: 0,
-      profit: 12000,
-      status: "SOLD OUT",
-    },
-    {
-      id: "B-004",
-      supplier: "Clothing Wholesale",
-      cost: 3000,
-      stock: 25,
-      profit: 12500,
-      status: "AVAILABLE",
-    },
-  ]);
+  // Fetch bales data from product.json
+  const [bales, setBales] = useState(productData.bales || []);
 
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("ALL");
   const [supplier, setSupplier] = useState("ALL");
 
-  const suppliers = [...new Set(bales.map((bale) => bale.supplier))];
+  // Get unique suppliers
+  const suppliers = [
+    ...new Set(bales.map((bale) => bale.supplier)),
+  ];
 
+  // Search and filter bales
   const filteredBales = bales.filter((bale) => {
     const matchesSearch =
       bale.id.toLowerCase().includes(search.toLowerCase()) ||
@@ -58,28 +31,49 @@ function Bales() {
     return matchesSearch && matchesStatus && matchesSupplier;
   });
 
-  const totalCost = bales.reduce((sum, bale) => sum + bale.cost, 0);
-  const totalProfit = bales.reduce((sum, bale) => sum + bale.profit, 0);
+  // Summary calculations
+  const totalCost = bales.reduce(
+    (sum, bale) => sum + Number(bale.cost || 0),
+    0
+  );
 
+  const totalProfit = bales.reduce(
+    (sum, bale) => sum + Number(bale.profit || 0),
+    0
+  );
+
+  const formatCurrency = (amount) =>
+    `₱${Number(amount).toLocaleString("en-PH")}`;
+
+  // Delete bale
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this bale?")) {
-      setBales((prev) => prev.filter((bale) => bale.id !== id));
+      setBales((prev) =>
+        prev.filter((bale) => bale.id !== id)
+      );
     }
   };
 
+  // View bale details
   const handleView = (bale) => {
     alert(
-      `Bale ID: ${bale.id}\nSupplier: ${bale.supplier}\nCost: ₱${bale.cost.toLocaleString("en-PH")}\nStock: ${bale.stock}\nNet Profit: ₱${bale.profit.toLocaleString("en-PH")}\nStatus: ${bale.status}`
+      `Bale ID: ${bale.id}
+Supplier: ${bale.supplier}
+Cost: ${formatCurrency(bale.cost)}
+Stock: ${bale.stock}
+Net Profit: ${formatCurrency(bale.profit)}
+Status: ${bale.status}`
     );
   };
 
+  // Edit bale stock
   const handleEdit = (bale) => {
     const newStock = window.prompt(
       "Enter updated stock quantity:",
       bale.stock
     );
 
-    if (newStock === null) return;
+    if (newStock === null || newStock.trim() === "") return;
 
     const parsedStock = Number(newStock);
 
@@ -98,7 +92,11 @@ function Bales() {
     setBales((prev) =>
       prev.map((item) =>
         item.id === bale.id
-          ? { ...item, stock: parsedStock, status: newStatus }
+          ? {
+              ...item,
+              stock: parsedStock,
+              status: newStatus,
+            }
           : item
       )
     );
@@ -134,25 +132,29 @@ function Bales() {
 
           <div className="bale-card">
             <div className="bale-card-label">TOTAL BALES</div>
-            <div className="bale-card-value">{bales.length}</div>
+            <div className="bale-card-value">
+              {bales.length}
+            </div>
           </div>
 
           <div className="bale-card">
             <div className="bale-card-label">TOTAL SUPPLIERS</div>
-            <div className="bale-card-value">{suppliers.length}</div>
+            <div className="bale-card-value">
+              {suppliers.length}
+            </div>
           </div>
 
           <div className="bale-card">
             <div className="bale-card-label">TOTAL COST</div>
             <div className="bale-card-value">
-              ₱{totalCost.toLocaleString("en-PH")}
+              {formatCurrency(totalCost)}
             </div>
           </div>
 
           <div className="bale-card">
             <div className="bale-card-label">NET PROFIT</div>
             <div className="bale-card-value">
-              ₱{totalProfit.toLocaleString("en-PH")}
+              {formatCurrency(totalProfit)}
             </div>
           </div>
 
@@ -185,6 +187,7 @@ function Bales() {
               onChange={(e) => setSupplier(e.target.value)}
             >
               <option value="ALL">All Suppliers</option>
+
               {suppliers.map((name) => (
                 <option key={name} value={name}>
                   {name}
@@ -217,14 +220,16 @@ function Bales() {
                 filteredBales.map((bale) => (
                   <tr key={bale.id}>
 
-                    <td className="bale-id">{bale.id}</td>
+                    <td className="bale-id">
+                      {bale.id}
+                    </td>
 
                     <td className="bale-supplier">
                       {bale.supplier}
                     </td>
 
                     <td className="bale-amount">
-                      ₱{bale.cost.toLocaleString("en-PH")}
+                      {formatCurrency(bale.cost)}
                     </td>
 
                     <td className={bale.stock === 0 ? "stock-zero" : ""}>
@@ -232,7 +237,7 @@ function Bales() {
                     </td>
 
                     <td className="bale-amount">
-                      ₱{bale.profit.toLocaleString("en-PH")}
+                      {formatCurrency(bale.profit)}
                     </td>
 
                     <td>
@@ -287,6 +292,7 @@ function Bales() {
           </table>
         </div>
 
+        {/* Footer */}
         <div className="bales-footer">
           Showing {filteredBales.length} of {bales.length} entries
         </div>

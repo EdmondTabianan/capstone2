@@ -1,5 +1,18 @@
 
 import { useState } from "react";
+import {
+  Package,
+  Shirt,
+  Layers,
+  Boxes,
+  ShoppingCart,
+  Warehouse,
+  Pencil,
+  Trash2,
+  Eye,
+  Tags,
+} from "lucide-react";
+
 import "../../assets/css/Products.css";
 
 function Products() {
@@ -17,12 +30,14 @@ function Products() {
   const [category, setCategory] = useState("ALL PRODUCT");
   const [status, setStatus] = useState("ALL");
 
+  // FILTER PRODUCTS
   const filteredProducts = products.filter((product) => {
     const remaining = product.stocks - product.sold;
     const productStatus = remaining === 0 ? "OUT OF STOCK" : "IN-STOCK";
 
-    const matchesSearch =
-      product.type.toLowerCase().includes(search.toLowerCase());
+    const matchesSearch = product.type
+      .toLowerCase()
+      .includes(search.toLowerCase());
 
     const matchesCategory =
       category === "ALL PRODUCT" || product.category === category;
@@ -33,22 +48,46 @@ function Products() {
     return matchesSearch && matchesCategory && matchesStatus;
   });
 
+  // GROUP PRODUCTS BY CATEGORY
+  const groupedProducts = filteredProducts.reduce((groups, product) => {
+    if (!groups[product.category]) {
+      groups[product.category] = [];
+    }
+
+    groups[product.category].push(product);
+
+    return groups;
+  }, {});
+
+  // DELETE PRODUCT
   const handleDelete = (id) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this product?"
     );
 
     if (confirmDelete) {
-      setProducts((prev) => prev.filter((product) => product.id !== id));
+      setProducts((prev) =>
+        prev.filter((product) => product.id !== id)
+      );
     }
   };
 
+  // VIEW PRODUCT
   const handleView = (product) => {
+    const remaining = product.stocks - product.sold;
+
     alert(
-      `Product: ${product.type}\nCategory: ${product.category}\nPrice: ₱${product.price}\nStocks: ${product.stocks}\nSold: ${product.sold}`
+      `Product: ${product.type}\n` +
+      `Category: ${product.category}\n` +
+      `Price: ₱${product.price}\n` +
+      `Stocks: ${product.stocks}\n` +
+      `Sold: ${product.sold}\n` +
+      `Remaining Stocks: ${remaining}\n` +
+      `Status: ${remaining === 0 ? "OUT OF STOCK" : "IN-STOCK"}`
     );
   };
 
+  // EDIT PRODUCT
   const handleEdit = (product) => {
     const newPrice = window.prompt(
       "Enter new product price:",
@@ -56,6 +95,11 @@ function Products() {
     );
 
     if (newPrice === null) return;
+
+    if (newPrice.trim() === "") {
+      alert("Price cannot be empty.");
+      return;
+    }
 
     const parsedPrice = Number(newPrice);
 
@@ -76,26 +120,32 @@ function Products() {
   return (
     <section className="products-page">
 
+      {/* PAGE HEADER */}
       <header className="products-header">
         <div className="header-bar">
-          <h1>PRODUCT MANAGEMENT</h1>
+          <h1>
+            <Package size={23} />
+            PRODUCT MANAGEMENT
+          </h1>
         </div>
       </header>
 
       <div className="products-content">
 
+        {/* CATEGORY TITLE AND ACTIONS */}
         <div className="products-top">
+
           <div>
             <h2>
               Category Type Name:{" "}
-              <span>
-                {category}
-              </span>
+              <span>{category}</span>
             </h2>
+
             <p>{filteredProducts.length} products displayed</p>
           </div>
 
           <div className="category-actions">
+
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
@@ -107,13 +157,17 @@ function Products() {
 
             <button
               className="add-category"
-              onClick={() => alert("Add Category Type feature coming soon.")}
+              onClick={() =>
+                alert("Add Category Type feature coming soon.")
+              }
             >
               + Add Category Type
             </button>
+
           </div>
         </div>
 
+        {/* SEARCH AND STATUS FILTER */}
         <div className="products-filters">
 
           <input
@@ -134,94 +188,185 @@ function Products() {
 
         </div>
 
-        <div className="products-table-container">
-          <table className="products-table">
+        {/* CATEGORY CARD GRID */}
+        <div className="category-card-grid">
 
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>TYPE</th>
-                <th>CATEGORY</th>
-                <th>PRICE</th>
-                <th>STOCKS</th>
-                <th>SOLD</th>
-                <th>REMAINING STOCKS</th>
-                <th>STATUS</th>
-                <th>ACTIONS</th>
-              </tr>
-            </thead>
+          {Object.keys(groupedProducts).length > 0 ? (
 
-            <tbody>
-              {filteredProducts.length > 0 ? (
-                filteredProducts.map((product, index) => {
-                  const remaining = product.stocks - product.sold;
-                  const isOutOfStock = remaining === 0;
+            Object.entries(groupedProducts).map(
+              ([categoryName, categoryProducts]) => (
 
-                  return (
-                    <tr key={product.id}>
-                      <td>{index + 1}</td>
+                <div
+                  className="category-product-card"
+                  key={categoryName}
+                >
 
-                      <td className="product-name">
-                        {product.type}
-                      </td>
+                  {/* CATEGORY HEADER */}
+                  <div className="category-product-header">
 
-                      <td>
-                        <span className={`category-badge ${product.category.toLowerCase()}`}>
-                          {product.category}
-                        </span>
-                      </td>
+                    <div className="category-title">
 
-                      <td>₱{product.price.toLocaleString("en-PH")}</td>
+                      <div
+                        className={`category-icon ${categoryName.toLowerCase()}`}
+                      >
+                        {categoryName === "TOPS" ? (
+                          <Shirt size={22} />
+                        ) : (
+                          <Layers size={22} />
+                        )}
+                      </div>
 
-                      <td>{product.stocks}</td>
+                      <div>
+                        <h3>{categoryName}</h3>
+                        <p>
+                          {categoryProducts.length} Products
+                        </p>
+                      </div>
 
-                      <td>{product.sold}</td>
+                    </div>
 
-                      <td className={isOutOfStock ? "zero-stock" : ""}>
-                        {remaining}
-                      </td>
+                    <span
+                      className={`category-badge ${categoryName.toLowerCase()}`}
+                    >
+                      <Tags size={13} />
+                      {categoryName}
+                    </span>
 
-                      <td>
-                        <span className={`status-badge ${isOutOfStock ? "out-stock" : "in-stock"}`}>
-                          {isOutOfStock ? "OUT OF STOCK" : "IN-STOCK"}
-                        </span>
-                      </td>
+                  </div>
 
-                      <td className="product-actions">
-                        <button
-                          className="edit-btn"
-                          onClick={() => handleEdit(product)}
+                  {/* PRODUCTS INSIDE CATEGORY */}
+                  <div className="category-product-list">
+
+                    {categoryProducts.map((product) => {
+
+                      const remaining =
+                        product.stocks - product.sold;
+
+                      const isOutOfStock = remaining === 0;
+
+                      return (
+
+                        <div
+                          className="individual-product-card"
+                          key={product.id}
                         >
-                          Edit
-                        </button>
 
-                        <button
-                          className="delete-btn"
-                          onClick={() => handleDelete(product.id)}
-                        >
-                          Delete
-                        </button>
+                          {/* PRODUCT NAME AND STATUS */}
+                          <div className="individual-product-header">
 
-                        <button
-                          className="view-btn"
-                          onClick={() => handleView(product)}
-                        >
-                          View
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })
-              ) : (
-                <tr>
-                  <td colSpan="9" className="no-products">
-                    No products found.
-                  </td>
-                </tr>
-              )}
-            </tbody>
+                            <div className="product-name-icon">
+                              <Package size={18} />
+                              <h4>{product.type}</h4>
+                            </div>
 
-          </table>
+                            <span
+                              className={`status-badge ${
+                                isOutOfStock
+                                  ? "out-stock"
+                                  : "in-stock"
+                              }`}
+                            >
+                              {isOutOfStock
+                                ? "OUT OF STOCK"
+                                : "IN-STOCK"}
+                            </span>
+
+                          </div>
+
+                          {/* PRODUCT PRICE */}
+                          <div className="product-price">
+                            ₱{product.price.toLocaleString("en-PH")}
+                          </div>
+
+                          {/* STOCK INFORMATION */}
+                          <div className="product-stock-grid">
+
+                            <div>
+                              <span>
+                                <Boxes size={14} />
+                                Stocks
+                              </span>
+
+                              <strong>{product.stocks}</strong>
+                            </div>
+
+                            <div>
+                              <span>
+                                <ShoppingCart size={14} />
+                                Sold
+                              </span>
+
+                              <strong>{product.sold}</strong>
+                            </div>
+
+                            <div>
+                              <span>
+                                <Warehouse size={14} />
+                                Remaining
+                              </span>
+
+                              <strong
+                                className={
+                                  isOutOfStock ? "zero-stock" : ""
+                                }
+                              >
+                                {remaining}
+                              </strong>
+                            </div>
+
+                          </div>
+
+                          {/* PRODUCT ACTIONS */}
+                          <div className="product-actions">
+
+                            <button
+                              className="edit-btn"
+                              onClick={() => handleEdit(product)}
+                            >
+                              <Pencil size={14} />
+                              Edit
+                            </button>
+
+                            <button
+                              className="delete-btn"
+                              onClick={() =>
+                                handleDelete(product.id)
+                              }
+                            >
+                              <Trash2 size={14} />
+                              Delete
+                            </button>
+
+                            <button
+                              className="view-btn"
+                              onClick={() => handleView(product)}
+                            >
+                              <Eye size={14} />
+                              View
+                            </button>
+
+                          </div>
+
+                        </div>
+
+                      );
+                    })}
+
+                  </div>
+
+                </div>
+
+              )
+            )
+
+          ) : (
+
+            <div className="no-products">
+              No products found.
+            </div>
+
+          )}
+
         </div>
 
       </div>

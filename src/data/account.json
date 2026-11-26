@@ -1,0 +1,36 @@
+{
+  "accounts": [
+    {
+      "id": "ACC-001",
+      "username": "admin",
+      "name": "System Administrator",
+      "email": "admin@gmail.com",
+      "role": "Admin",
+      "status": "Active"
+    },
+    {
+      "id": "ACC-002",
+      "username": "john",
+      "name": "John Smith",
+      "email": "john@gmail.com",
+      "role": "Staff",
+      "status": "Active"
+    },
+    {
+      "id": "ACC-003",
+      "username": "mary",
+      "name": "Mary Santos",
+      "email": "mary@gmail.com",
+      "role": "Staff",
+      "status": "Active"
+    },
+    {
+      "id": "ACC-004",
+      "username": "peter",
+      "name": "Peter Cruz",
+      "email": "peter@gmail.com",
+      "role": "Staff",
+      "status": "Inactive"
+    }
+  ]
+}

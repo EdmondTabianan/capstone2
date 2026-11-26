@@ -1,0 +1,475 @@
+
+/* =================================
+   GENERAL DASHBOARD
+================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+.dashboard-page {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 20px;
+    margin: 0 auto;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* =================================
+   DASHBOARD HEADER
+================================= */
+
+.dashboard-header {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 20px 25px;
+    background: #f0f3f8;
+    border-radius: 14px;
+}
+
+.welcome-text {
+    font-size: 24px;
+    font-weight: 800;
+    color: #4779ed;
+}
+
+.admin-pill {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4786ff;
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+/* =================================
+   SUMMARY CARDS
+================================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    min-width: 0;
+    min-height: 145px;
+    padding: 25px 20px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #4e80f5, #3e6fd5);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.stat-label {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.stat-value {
+    font-size: clamp(22px, 2vw, 32px);
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+/* =================================
+   CONTENT GRID
+================================= */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.panel {
+    min-width: 0;
+    width: 100%;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 18px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.panel-header a {
+    color: #4779ed;
+    text-decoration: none;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/* =================================
+   RESPONSIVE TABLES
+================================= */
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive table {
+    width: 100%;
+    min-width: 480px;
+    border-collapse: collapse;
+}
+
+.table-responsive th,
+.table-responsive td {
+    padding: 13px 12px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #e8edf3;
+    white-space: nowrap;
+}
+
+.table-responsive th {
+    background: #f4f6fa;
+    color: #475569;
+    font-weight: 700;
+}
+
+/* =================================
+   NEW PRODUCTS
+================================= */
+
+.product-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.product-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 14px 10px;
+    border-bottom: 1px solid #edf0f5;
+    font-size: 14px;
+}
+
+.product-tag {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #eaf0ff;
+    color: #4779ed;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* =================================
+   FINANCIAL OVERVIEW
+================================= */
+
+.chart-panel {
+    width: 100%;
+    min-width: 0;
+    padding: 22px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.chart-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chart-title-wrap h3 {
+    font-size: 19px;
+    margin: 0;
+}
+
+.chart-check {
+    width: 10px;
+    height: 10px;
+    background: #4779ed;
+    border-radius: 50%;
+}
+
+.chart-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tab {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 7px;
+    background: #f0f3f8;
+    cursor: pointer;
+}
+
+.tab.active {
+    background: #4779ed;
+    color: white;
+}
+
+.chart-legend {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.chart-legend span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+}
+
+.legend {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.legend.blue {
+    background: #3d72ff;
+}
+
+.legend.green {
+    background: #32c39f;
+}
+
+.legend.yellow {
+    background: #f0c04f;
+}
+
+.legend.red {
+    background: #d95f4c;
+}
+
+.chart-box {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.chart-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 180px;
+}
+
+/* =================================
+   TABLET RESPONSIVENESS
+================================= */
+
+@media screen and (max-width: 1024px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-header {
+        align-items: flex-start;
+    }
+}
+
+/* =================================
+   MOBILE RESPONSIVENESS
+================================= */
+
+@media screen and (max-width: 768px) {
+
+    .dashboard-page {
+        width: 100%;
+        padding: 15px;
+        padding-top: 20px;
+        margin: 0;
+    }
+
+    /* Welcome header */
+    .dashboard-header {
+        margin-top: 0;
+        margin-bottom: 18px;
+    }
+
+    .header-bar {
+        padding: 15px;
+        gap: 8px;
+    }
+
+    .welcome-text {
+        font-size: clamp(15px, 4vw, 20px);
+        line-height: 1.4;
+    }
+
+    .admin-pill {
+        width: 42px;
+        height: 42px;
+        font-size: 13px;
+    }
+
+    /* Summary cards */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .stat-card {
+        min-height: 130px;
+        padding: 22px 18px;
+    }
+
+    .stat-label {
+        font-size: 15px;
+        margin-bottom: 15px;
+    }
+
+    .stat-value {
+        font-size: 28px;
+    }
+
+    /* Tables and panels */
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .panel {
+        padding: 16px;
+    }
+
+    .panel-header {
+        font-size: 15px;
+    }
+
+    .table-responsive table {
+        min-width: 480px;
+    }
+
+    /* Products */
+    .product-list li {
+        padding: 13px 5px;
+        font-size: 13px;
+    }
+
+    /* Financial chart */
+    .chart-panel {
+        padding: 16px;
+    }
+
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .chart-title-wrap h3 {
+        font-size: 17px;
+    }
+
+    .chart-tabs {
+        width: 100%;
+        gap: 6px;
+    }
+
+    .tab {
+        flex: 1;
+        padding: 8px 5px;
+        font-size: 12px;
+    }
+
+    .chart-legend {
+        gap: 12px;
+    }
+
+    .chart-legend span {
+        font-size: 12px;
+    }
+
+    .chart-svg {
+        min-height: 160px;
+    }
+}
+
+/* =================================
+   SMALL MOBILE
+================================= */
+
+@media screen and (max-width: 380px) {
+
+    .dashboard-page {
+        padding: 12px;
+    }
+
+    .welcome-text {
+        font-size: 14px;
+    }
+
+    .admin-pill {
+        width: 36px;
+        height: 36px;
+    }
+
+    .stat-card {
+        min-height: 115px;
+        padding: 18px 15px;
+    }
+
+    .stat-value {
+        font-size: 24px;
+    }
+
+    .panel {
+        padding: 12px;
+    }
+
+    .chart-panel {
+        padding: 12px;
+    }
+}

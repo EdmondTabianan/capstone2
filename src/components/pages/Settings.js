@@ -1,44 +1,15 @@
+
 import "../../assets/css/Settings.css";
+import accountData from "../../data/account.json";
 
 function Settings() {
 
-const accounts = [
-  {
-    id: "ACC-001",
-    username: "admin",
-    name: "System Administrator",
-    email: "admin@gmail.com",
-    role: "Admin",
-    status: "Active"
-  },
-  {
-    id: "ACC-002",
-    username: "john",
-    name: "John Smith",
-    email: "john@gmail.com",
-    role: "Staff",
-    status: "Active"
-  },
-  {
-    id: "ACC-003",
-    username: "mary",
-    name: "Mary Santos",
-    email: "mary@gmail.com",
-    role: "Staff",
-    status: "Active"
-  },
-  {
-    id: "ACC-004",
-    username: "peter",
-    name: "Peter Cruz",
-    email: "peter@gmail.com",
-    role: "Staff",
-    status: "Inactive"
-  }
-];
+  // Get accounts from account.json
+  const accounts = accountData.accounts || [];
 
   return (
     <div className="settings-page">
+
       <div className="settings-title">
         <div>
           <h2>System Settings</h2>
@@ -55,7 +26,10 @@ const accounts = [
 
           <div className="settings-field">
             <label>System Name</label>
-            <input type="text" defaultValue="Inventory Management System" />
+            <input
+              type="text"
+              defaultValue="Inventory Management System"
+            />
           </div>
 
           <div className="settings-field">
@@ -103,85 +77,104 @@ const accounts = [
           <button className="settings-save">Save Changes</button>
         </div>
 
-        
-{/* Account Management */}
+        {/* Account Management */}
+        <div className="account-management">
 
-<div className="account-management">
-  <div className="account-header">
-    <div>
-      <h3>Account Management</h3>
-      <p>View and manage all registered system accounts.</p>
-    </div>
+          <div className="account-header">
+            <div>
+              <h3>Account Management</h3>
+              <p>View and manage all registered system accounts.</p>
+            </div>
 
-    <button className="settings-save">
-      + Add Account
-    </button>
-  </div>
+            <button className="settings-save">
+              + Add Account
+            </button>
+          </div>
 
-  <div className="account-summary">
-    <div>
-      <span>Total Accounts</span>
-      <strong>{accounts.length}</strong>
-    </div>
-    <div>
-      <span>Active Accounts</span>
-      <strong>
-        {accounts.filter(a => a.status === "Active").length}
-      </strong>
-    </div>
-    <div>
-      <span>Inactive Accounts</span>
-      <strong>
-        {accounts.filter(a => a.status === "Inactive").length}
-      </strong>
-    </div>
-  </div>
+          {/* Account Summary */}
+          <div className="account-summary">
 
-  <div className="account-table-wrapper">
-    <table className="account-table">
-      <thead>
-        <tr>
-          <th>Account ID</th>
-          <th>Username</th>
-          <th>Full Name</th>
-          <th>Email Address</th>
-          <th>Role</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
+            <div>
+              <span>Total Accounts</span>
+              <strong>{accounts.length}</strong>
+            </div>
 
-      <tbody>
-        {accounts.map(account => (
-          <tr key={account.id}>
-            <td>{account.id}</td>
-            <td>{account.username}</td>
-            <td>{account.name}</td>
-            <td>{account.email}</td>
-            <td>
-              <span className={`account-role ${account.role.toLowerCase()}`}>
-                {account.role}
-              </span>
-            </td>
-            <td>
-              <span className={`account-status ${account.status.toLowerCase()}`}>
-                {account.status}
-              </span>
-            </td>
-            <td>
-              <div className="account-actions">
-                <button title="View">View</button>
-                <button title="Edit">Edit</button>
-                <button title="Delete">Delete</button>
-              </div>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-</div>
+            <div>
+              <span>Active Accounts</span>
+              <strong>
+                {accounts.filter(a => a.status === "Active").length}
+              </strong>
+            </div>
 
+            <div>
+              <span>Inactive Accounts</span>
+              <strong>
+                {accounts.filter(a => a.status === "Inactive").length}
+              </strong>
+            </div>
+
+          </div>
+
+          {/* Account Table */}
+          <div className="account-table-wrapper">
+            <table className="account-table">
+
+              <thead>
+                <tr>
+                  <th>Account ID</th>
+                  <th>Username</th>
+                  <th>Full Name</th>
+                  <th>Email Address</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {accounts.map(account => (
+                  <tr key={account.id}>
+
+                    <td>{account.id}</td>
+                    <td>{account.username}</td>
+                    <td>{account.name}</td>
+                    <td>{account.email}</td>
+
+                    <td>
+                      <span className={`account-role ${account.role.toLowerCase()}`}>
+                        {account.role}
+                      </span>
+                    </td>
+
+                    <td>
+                      <span className={`account-status ${account.status.toLowerCase()}`}>
+                        {account.status}
+                      </span>
+                    </td>
+
+                    <td>
+                      <div className="account-actions">
+                        <button title="View">View</button>
+                        <button title="Edit">Edit</button>
+                        <button title="Delete">Delete</button>
+                      </div>
+                    </td>
+
+                  </tr>
+                ))}
+
+                {accounts.length === 0 && (
+                  <tr>
+                    <td colSpan="7">No accounts found.</td>
+                  </tr>
+                )}
+
+              </tbody>
+
+            </table>
+          </div>
+
+        </div>
 
         {/* Notification Settings */}
         <div className="settings-card">
@@ -191,7 +184,9 @@ const accounts = [
           <div className="settings-option">
             <div>
               <strong>Low Stock Notifications</strong>
-              <small>Receive alerts when products reach low stock.</small>
+              <small>
+                Receive alerts when products reach low stock.
+              </small>
             </div>
             <input type="checkbox" defaultChecked />
           </div>
@@ -199,7 +194,9 @@ const accounts = [
           <div className="settings-option">
             <div>
               <strong>Out of Stock Alerts</strong>
-              <small>Get notified when products are out of stock.</small>
+              <small>
+                Get notified when products are out of stock.
+              </small>
             </div>
             <input type="checkbox" defaultChecked />
           </div>
@@ -207,12 +204,16 @@ const accounts = [
           <div className="settings-option">
             <div>
               <strong>Sales Notifications</strong>
-              <small>Receive notifications about sales transactions.</small>
+              <small>
+                Receive notifications about sales transactions.
+              </small>
             </div>
             <input type="checkbox" defaultChecked />
           </div>
 
-          <button className="settings-save">Save Preferences</button>
+          <button className="settings-save">
+            Save Preferences
+          </button>
         </div>
 
       </div>
